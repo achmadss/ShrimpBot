@@ -28,7 +28,7 @@ class Basic(commands.Cog):
         mentions = context.message.mentions
         msg = ""
         if not mentions:
-            msg += context.message.author.mention + "... slapped themselves?"
+            msg += context.message.author.mention + "... is slapping themselves?"
         else:
             msg += context.message.author.mention + " has slapped "
             for mention in mentions:
@@ -44,7 +44,7 @@ class Basic(commands.Cog):
         mentions = context.message.mentions
         msg = ""
         if not mentions:
-            msg += context.message.author.mention + "... kissed themselves?"
+            msg += context.message.author.mention + "... is kissing themselves?"
         else:
             msg += context.message.author.mention + " has kissed "
             for mention in mentions:
@@ -60,7 +60,7 @@ class Basic(commands.Cog):
         mentions = context.message.mentions
         msg = ""
         if not mentions:
-            msg += context.message.author.mention + "... hugged themselves?"
+            msg += context.message.author.mention + "... is hugging themselves?"
         else:
             msg += context.message.author.mention + " has hugged "
             for mention in mentions:
@@ -74,7 +74,7 @@ class Basic(commands.Cog):
 
 async def search_gifs(query):
     apikey = "3MYUQWVPOFEL"
-    lmt = 25
+    lmt = 50
     search_term = query
 
     gifs = []
