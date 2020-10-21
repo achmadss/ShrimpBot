@@ -1,5 +1,10 @@
+import json
 import random as random, discord
+import giphy_client
 from discord.ext import commands
+from giphy_client.rest import ApiException
+from requests import *
+import requests
 
 # ini class Basic
 # nanti di help ada kategori "Basic"
@@ -19,13 +24,77 @@ class Basic(commands.Cog):
 
     # command slap
     @commands.command()
-    async def slap(self, context, member: discord.Member):
-        await context.send(f"PONG {member}")
-        # embedVar = discord.Embed(title=context.message.author.mention+" ", description="", color=0x00FFFF)
-        # embedVar.add_field(name="Field1", value="hi", inline=True)
-        # embedVar.add_field(name="Field2", value="hi2", inline=False)
-        # await context.send(embed=embedVar)
+    async def slap(self, context):
+        mentions = context.message.mentions
+        msg = ""
+        if not mentions:
+            msg += context.message.author.mention + "... slapped themselves?"
+        else:
+            msg += context.message.author.mention + " has slapped "
+            for mention in mentions:
+                msg += f" {mention.mention}"
+
+        gif = await search_gifs('anime slap')
+
+        await context.send(content=msg+"\n"+gif)
+
+    # command kiss
+    @commands.command()
+    async def kiss(self, context):
+        mentions = context.message.mentions
+        msg = ""
+        if not mentions:
+            msg += context.message.author.mention + "... kissed themselves?"
+        else:
+            msg += context.message.author.mention + " has kissed "
+            for mention in mentions:
+                msg += f" {mention.mention}"
+
+        gif = await search_gifs('anime kiss')
+        
+        await context.send(content=msg+"\n"+gif)
+
+    # command hug
+    @commands.command()
+    async def hug(self, context):
+        mentions = context.message.mentions
+        msg = ""
+        if not mentions:
+            msg += context.message.author.mention + "... hugged themselves?"
+        else:
+            msg += context.message.author.mention + " has hugged "
+            for mention in mentions:
+                msg += f" {mention.mention}"
+        
+
+        gif = await search_gifs('anime hug')
+        
+        await context.send(content=msg+"\n"+gif)
+
+
+async def search_gifs(query):
+    apikey = "3MYUQWVPOFEL"
+    lmt = 25
+    search_term = query
+
+    gifs = []
+
+    r = requests.get(
+        "https://api.tenor.com/v1/search?q=%s&key=%s&limit=%s" % (search_term, apikey, lmt))
+
+    if r.status_code == 200:
+        # load the GIFs using the urls for the smaller GIF sizes
+        top = json.loads(r.content)
+        for res in top["results"]:
+            gifs.append(res["url"])
+        
+        gif = random.choice(gifs)
+
+        return gif
+    else:
+        top_8gifs = None
+
 
 
 def setup(bot):
-    bot.add_cog(Basic(bot))    
+    bot.add_cog(Basic(bot))

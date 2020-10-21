@@ -2,7 +2,8 @@ import os
 from discord.ext import commands
 
 BOT_PREFIX = ("?")
-TOKEN = os.getenv("DISCORD_TOKEN")
+# TOKEN = os.getenv("DISCORD_TOKEN")
+TOKEN = "NzY4NDA1ODc3ODQ1NTI0NDgx.X4__vQ.bo5yRNvyrMpD4rn8pvR4eN0_3Ms"
 
 client = commands.Bot(command_prefix=BOT_PREFIX)
 
