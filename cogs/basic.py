@@ -3,7 +3,6 @@ import random as random, discord
 import giphy_client
 from discord.ext import commands
 from giphy_client.rest import ApiException
-from requests import *
 import requests
 
 # ini class Basic
