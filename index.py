@@ -12,6 +12,6 @@ client = Bot(command_prefix=BOT_PREFIX)
 async def on_ready():
     print(f"Logged in as {client.user.name}({client.user.id})")
 
-sys.path.append('/commands')
+sys.path.append('commands/')
 
 client.run(TOKEN)
