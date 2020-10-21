@@ -20,8 +20,8 @@ class Basic(commands.Cog):
     # command slap
     @commands.command()
     async def slap(self, context):
-        embedVar = discord.Embed(title="Title", description="Desc", color=0x00ff00)
-        embedVar.add_field(name="Field1", value="hi", inline=False)
+        embedVar = discord.Embed(title="Title", description="Desc", color=0x00FFFF)
+        embedVar.add_field(name="Field1", value="hi", inline=True)
         embedVar.add_field(name="Field2", value="hi2", inline=False)
         await context.send(embed=embedVar)
 
