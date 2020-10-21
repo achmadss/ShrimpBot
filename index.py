@@ -1,14 +1,15 @@
+import os
 import random as random
 from discord.ext.commands import Bot
 
 BOT_PREFIX = ("?")
-TOKEN = "NzY4NDA1ODc3ODQ1NTI0NDgx.X4__vQ.zAh8X7eJyD63g3LtBpdTkfO-llI"
+TOKEN = os.getenv("DISCORD_TOKEN")
 
 client = Bot(command_prefix=BOT_PREFIX)
 
 @client.event
 async def on_ready():
-    print("Bot is ready!")
+    print(f"Logged in as {client.user.name}({client.user.id})")
 
 @client.command()
 async def ping(context):
