@@ -1,7 +1,6 @@
 import random as random
-
 @client.command()
-async def ping(context):
+async def function(context):
     res = [
         "OK peko~",
         "Konpeko~",
