@@ -19,11 +19,12 @@ class Basic(commands.Cog):
 
     # command slap
     @commands.command()
-    async def slap(self, context):
-        embedVar = discord.Embed(title="Title", description="Desc", color=0x00FFFF)
-        embedVar.add_field(name="Field1", value="hi", inline=True)
-        embedVar.add_field(name="Field2", value="hi2", inline=False)
-        await context.send(embed=embedVar)
+    async def slap(self, context, member: discord.Member):
+        await context.send(f"PONG {member}")
+        # embedVar = discord.Embed(title=context.message.author.mention+" ", description="", color=0x00FFFF)
+        # embedVar.add_field(name="Field1", value="hi", inline=True)
+        # embedVar.add_field(name="Field2", value="hi2", inline=False)
+        # await context.send(embed=embedVar)
 
 
 def setup(bot):
