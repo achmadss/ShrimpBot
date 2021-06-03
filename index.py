@@ -3,6 +3,7 @@ from discord.ext import commands
 
 BOT_PREFIX = ("?")
 TOKEN = os.getenv("DISCORD_TOKEN")
+TOKEN = "NzY4NDA1ODc3ODQ1NTI0NDgx.X4__vQ.I23hzrcLr7JOJuFY43ffsBnudJ0"
 
 client = commands.Bot(command_prefix=BOT_PREFIX)
 
